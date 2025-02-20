@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logotipo Clique Pedidos Online</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        svg {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logotipo em SVG -->
+    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cursor -->
+        <polygon points="50,20 65,45 35,45" fill="#0074D9" />
+        <line x1="50" y1="45" x2="50" y2="75" stroke="#0074D9" stroke-width="2" />
+        
+        <!-- Círculo Brilhante -->
+        <circle cx="50" cy="100" r="25" fill="url(#gradient)" stroke="#0074D9" stroke-width="2" />
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0074D9" />
+                <stop offset="100%" stop-color="#2ECC40" />
+            </linearGradient>
+        </defs>
+        
+        <!-- Ícone Interno (Seta Curva) -->
+        <path d="M45,95 Q50,85 55,95 T65,95" stroke="#FFFFFF" stroke-width="2" fill="none" />
+        
+        <!-- Texto -->
+        <text x="50" y="160" font-family="Poppins, Arial" font-size="12" fill="#808080" text-anchor="middle">Pedidos Online</text>
+    </svg>
+</body>
+</html>

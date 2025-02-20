@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Calculadora de peso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calc.css">
+    
+</head>
+    
+</head>
+<body>
+    <header>
+        <img src="img/logo2.png" alt="Logo" class="logo-efeito">
+        <h1>Ferramentas Pet</h1>
+        <a href="index.html" class="home-button">Home</a>
+    </header>
+    
+
+    <div class="container" id="card">
+        <h2>Calculadora de Preço e Peso</h2>
+        
+        <label>Valor do Kg (R$):</label>
+        <input type="number" id="valorKg" placeholder="Digite o valor do Kg" min="0.01" step="0.01">
+        <p class="error" id="erroValorKg"></p>
+        
+        <label>Peso desejado (Kg):</label>
+        <input type="number" id="pesoDesejado" placeholder="Digite o peso desejado" min="0.01" step="0.01">
+        <p class="error" id="erroPesoDesejado"></p>
+        
+        <button onclick="calcularPreco()">Calcular Preço</button>
+        <p id="resultadoPreco"></p>
+        
+        <hr>
+        
+        <label>Valor Pago (R$):</label>
+        <input type="number" id="valorPago" placeholder="Digite o valor pago" min="0.01" step="0.01">
+        <p class="error" id="erroValorPago"></p>
+        
+        <button onclick="calcularPeso()">Calcular Peso</button>
+        <p id="resultadoPeso"></p>
+        
+        <button class="clear-button" onclick="limparResultados()">Limpar Resultados</button>
+    </div>
+    
+     <footer>
+        <p>Contato:</p>
+        <p>
+            <a href="mailto:jrdias32@gmail.com" class="contact-link" target="_blank">
+                <i class="fas fa-envelope"></i> Junior Dias
+            </a> | 
+            <a href="https://wa.me/5522997407901" class="contact-link" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a> | 
+            <a href="https://jrmanutencao.netlify.app/" class="contact-link" target="_blank">
+                <i class="fas fa-globe"></i> JR Manutenção
+            </a>
+        </p>
+        <p>&copy; 2025 Ferramentas Pet</p>
+    </footer>
+    
+    <script>
+        function calcularPreco() {
+            let valorKg = parseFloat(document.getElementById('valorKg').value);
+            let peso = parseFloat(document.getElementById('pesoDesejado').value);
+            
+            limparErros();
+            
+            if (!valorKg || valorKg <= 0) {
+                document.getElementById('erroValorKg').innerText = 'Insira um valor válido para o Kg';
+                return;
+            }
+            if (!peso || peso <= 0) {
+                document.getElementById('erroPesoDesejado').innerText = 'Insira um peso válido';
+                return;
+            }
+            
+            let total = valorKg * peso;
+            document.getElementById('resultadoPreco').innerText = `Total a pagar: R$ ${total.toFixed(2)}`;
+        }
+
+        function calcularPeso() {
+            let valorKg = parseFloat(document.getElementById('valorKg').value);
+            let valorPago = parseFloat(document.getElementById('valorPago').value);
+            
+            limparErros();
+            
+            if (!valorKg || valorKg <= 0) {
+                document.getElementById('erroValorKg').innerText = 'Insira um valor válido para o Kg';
+                return;
+            }
+            if (!valorPago || valorPago <= 0) {
+                document.getElementById('erroValorPago').innerText = 'Insira um valor pago válido';
+                return;
+            }
+            
+            let pesoComprado = valorPago / valorKg;
+            document.getElementById('resultadoPeso').innerText = `Peso comprado: ${pesoComprado.toFixed(2)} Kg`;
+        }
+
+        function limparResultados() {
+            document.getElementById('resultadoPreco').innerText = '';
+            document.getElementById('resultadoPeso').innerText = '';
+            limparErros();
+        }
+        
+        function limparErros() {
+            document.getElementById('erroValorKg').innerText = '';
+            document.getElementById('erroPesoDesejado').innerText = '';
+            document.getElementById('erroValorPago').innerText = '';
+        }
+    </script>
+</body>
+</html>
